@@ -16,16 +16,16 @@
   <style>
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background: #06161f;
+      background: #f8fafc;
     }
 
     .video-bg {
       position: absolute;
-      top: 50%;
+      bottom: 0;
       left: 50%;
       width: 120vw;
-      height: 120vh;
-      transform: translate(-50%, -50%);
+      height: 110vh;
+      transform: translateX(-50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -39,25 +39,46 @@
     @media (max-aspect-ratio: 16/9) {
       .video-bg {
         width: 180vh;
-        height: 120vh;
+        height: 110vh;
       }
     }
 
     .glass-card {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
     }
 
     .gradient-text {
       background: linear-gradient(90deg, #67e8f9, #a7f3d0, #ffffff);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      opacity: 0.5;
     }
 
     .soft-glow {
-      box-shadow: 0 0 45px rgba(103, 232, 249, 0.22);
+      box-shadow: 0 0 45px rgba(6, 182, 212, 0.25);
+    }
+
+    .line-btn {
+      background: #06C755;
+      animation: line-pulse 2.2s ease-in-out infinite;
+    }
+
+    .line-btn:hover {
+      background: #05a648;
+    }
+
+    @keyframes line-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.45);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(6, 199, 85, 0);
+      }
     }
 
     .floating {
@@ -75,9 +96,9 @@
 
     .section-bg {
       background:
-        radial-gradient(circle at top left, rgba(103, 232, 249, 0.14), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.12), transparent 34%),
-        #071923;
+        radial-gradient(circle at top left, rgba(6, 182, 212, 0.08), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.07), transparent 34%),
+        #f8fafc;
     }
   </style>
 </head>
@@ -85,28 +106,25 @@
 <body class="text-white overflow-x-hidden">
 
   <!-- Header -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-slate-950/40 backdrop-blur-xl border-b border-white/10">
+  <header class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-2xl bg-cyan-300 text-slate-950 flex items-center justify-center font-black">
-          O₂
-        </div>
-        <div>
-          <div class="font-black tracking-wide text-lg">O-Clean</div>
-          <div class="text-xs text-cyan-100/70">Pet Ozone Bath System</div>
-        </div>
+        <img src="images/petbeautyshower.png" alt="寵物摩氧浴" class="w-12 h-12 rounded-2xl object-cover">
+        <div class="text-lg font-black text-slate-900 tracking-wide">寵物摩氧浴</div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm text-white/80">
-        <a href="#problem" class="hover:text-cyan-200 transition">痛點</a>
-        <a href="#solution" class="hover:text-cyan-200 transition">解決方案</a>
-        <a href="#features" class="hover:text-cyan-200 transition">產品特色</a>
-        <a href="#process" class="hover:text-cyan-200 transition">使用流程</a>
-        <a href="#contact" class="hover:text-cyan-200 transition">預約諮詢</a>
+      <nav class="hidden md:flex items-center gap-2 text-base font-bold text-slate-700">
+        <a href="#problem" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">痛點</a>
+        <a href="#solution" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">解決方案</a>
+        <a href="#features" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">產品特色</a>
+        <a href="#process" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">使用流程</a>
+        <a href="#installation" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">安裝實績</a>
+        <a href="#contact" class="px-4 py-2 rounded-full hover:bg-cyan-50 hover:text-cyan-600 transition">預約諮詢</a>
       </nav>
 
-      <a href="#contact" class="hidden md:inline-flex px-5 py-2.5 rounded-full bg-cyan-300 text-slate-950 font-bold hover:bg-white transition">
-        立即諮詢
+      <a href="https://line.me/R/ti/p/@dhg4804f" target="_blank" class="line-btn hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white font-bold transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 3.07 2.02 5.78 5.06 7.34-.16.6-.59 2.2-.68 2.54-.11.42.15.42.32.3.13-.09 2.1-1.42 2.95-2 .76.11 1.54.17 2.35.17 5.52 0 10-3.94 10-8.8C22 5.94 17.52 2 12 2z"/></svg>
+        加LINE諮詢
       </a>
     </div>
   </header>
@@ -126,17 +144,12 @@
     </div>
 
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/45 via-slate-950/30 to-slate-950/45 z-10"></div>
-    <div class="absolute inset-0 bg-cyan-950/10 z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/35 via-slate-900/20 to-slate-900/40 z-10"></div>
+    <div class="absolute inset-0 bg-cyan-950/5 z-10"></div>
 
     <!-- Hero Content -->
     <div class="relative z-20 max-w-6xl mx-auto px-6 pt-32 pb-20 text-center">
-      <div class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full glass-card mb-6 text-sm text-cyan-100">
-        <span class="w-2 h-2 bg-cyan-300 rounded-full animate-pulse"></span>
-        專為寵物美容院設計的臭氧水清潔護理方案
-      </div>
-
-      <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-white/90">
+      <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 text-white/50">
         讓每一次洗澡，<br>
         都升級成
         <span class="gradient-text">摩氧護理</span>
@@ -145,40 +158,22 @@
     </div>
 
     <!-- Scroll cue -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/60 text-sm animate-bounce">
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/70 text-sm animate-bounce">
       向下探索
     </div>
   </section>
 
-  <section class="bg-slate-950/30 py-12">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="glass-card rounded-2xl p-6 text-center">
-          <div class="text-3xl font-black text-cyan-200 mb-2">4 段</div>
-          <div class="text-sm text-white/70">濃度調節</div>
-        </div>
-        <div class="glass-card rounded-2xl p-6 text-center">
-          <div class="text-3xl font-black text-cyan-200 mb-2">即開即用</div>
-          <div class="text-sm text-white/70">快速導入</div>
-        </div>
-        <div class="glass-card rounded-2xl p-6 text-center">
-          <div class="text-3xl font-black text-cyan-200 mb-2">低改裝</div>
-          <div class="text-sm text-white/70">接水龍頭</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Pain Point -->
   <section id="problem" class="section-bg py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl mb-14">
-        <span class="text-cyan-300 font-bold">WHY IT MATTERS</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6">
+        <span class="text-cyan-600 font-bold">WHY IT MATTERS</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-900">
           寵物洗澡不是洗乾淨就好，<br>
           而是一次建立信任的服務體驗。
         </h2>
-        <p class="text-white/70 text-lg leading-relaxed">
+        <p class="text-slate-600 text-lg leading-relaxed">
           對美容院來說，飼主最在意的不是設備多高級，而是毛孩洗完後是否清爽、氣味是否改善、皮膚是否舒適、服務是否值得回購。
           摩氧浴的價值，就是把「基礎洗澡」升級成更容易被感受到的加值護理服務。
         </p>
@@ -187,24 +182,24 @@
       <div class="grid md:grid-cols-3 gap-6">
         <div class="glass-card rounded-3xl p-8">
           <div class="text-4xl mb-5">🌧️</div>
-          <h3 class="text-2xl font-black mb-3">潮濕異味反覆</h3>
-          <p class="text-white/70 leading-relaxed">
+          <h3 class="text-2xl font-black mb-3 text-slate-900">潮濕異味反覆</h3>
+          <p class="text-slate-600 leading-relaxed">
             台灣氣候潮濕，毛孩身上的味道、環境異味與洗後殘留感，常常成為飼主回饋的關鍵。
           </p>
         </div>
 
         <div class="glass-card rounded-3xl p-8">
           <div class="text-4xl mb-5">🧴</div>
-          <h3 class="text-2xl font-black mb-3">清潔服務同質化</h3>
-          <p class="text-white/70 leading-relaxed">
+          <h3 class="text-2xl font-black mb-3 text-slate-900">清潔服務同質化</h3>
+          <p class="text-slate-600 leading-relaxed">
             多數美容院都提供洗澡、修毛、基礎護理，若缺少差異化服務，很容易陷入價格競爭。
           </p>
         </div>
 
         <div class="glass-card rounded-3xl p-8">
           <div class="text-4xl mb-5">🐾</div>
-          <h3 class="text-2xl font-black mb-3">飼主需要安心感</h3>
-          <p class="text-white/70 leading-relaxed">
+          <h3 class="text-2xl font-black mb-3 text-slate-900">飼主需要安心感</h3>
+          <p class="text-slate-600 leading-relaxed">
             飼主希望毛孩洗得乾淨，也希望過程溫和、舒適、沒有多餘化學負擔。
           </p>
         </div>
@@ -213,14 +208,18 @@
   </section>
 
   <!-- Solution -->
-  <section id="solution" class="bg-slate-950 py-24">
+  <section id="solution" class="bg-white py-24">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
       <div>
-        <span class="text-cyan-300 font-bold">O-CLEAN SOLUTION</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6">
+        <span class="text-cyan-600 font-black text-lg tracking-widest">SOLUTION</span>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-50 mt-4 mb-4 text-sm text-cyan-700 font-bold">
+          <span class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
+          專為寵物美容院設計的臭氧水清潔護理方案
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black mt-2 mb-6 text-slate-900">
           寵物摩氧浴，讓美容院多一個高感知、高回購的服務項目。
         </h2>
-        <p class="text-white/72 text-lg leading-relaxed mb-8">
+        <p class="text-slate-600 text-lg leading-relaxed mb-8">
           透過臭氧水即時生成與穩定輸出，搭配既有洗澡流程即可導入。
           不需要大規模施工，也不需要改變美容師原本的操作節奏，
           讓門店能用更低的教育成本，快速建立「清潔升級」與「護理加值」的服務定位。
@@ -228,26 +227,26 @@
 
         <div class="space-y-5">
           <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-cyan-300 text-slate-950 flex items-center justify-center font-black">1</div>
+            <div class="w-10 h-10 rounded-xl bg-cyan-400 text-slate-950 flex items-center justify-center font-black">1</div>
             <div>
-              <h3 class="font-black text-xl mb-1">提升單次服務價值</h3>
-              <p class="text-white/65">可作為洗澡加價、會員體驗、皮毛清潔升級方案。</p>
+              <h3 class="font-black text-xl mb-1 text-slate-900">提升單次服務價值</h3>
+              <p class="text-slate-600">可作為洗澡加價、會員體驗、皮毛清潔升級方案。</p>
             </div>
           </div>
 
           <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-cyan-300 text-slate-950 flex items-center justify-center font-black">2</div>
+            <div class="w-10 h-10 rounded-xl bg-cyan-400 text-slate-950 flex items-center justify-center font-black">2</div>
             <div>
-              <h3 class="font-black text-xl mb-1">增加顧客回訪理由</h3>
-              <p class="text-white/65">飼主對「洗後氣味、觸感、清爽度」更容易有直接感受。</p>
+              <h3 class="font-black text-xl mb-1 text-slate-900">增加顧客回訪理由</h3>
+              <p class="text-slate-600">飼主對「洗後氣味、觸感、清爽度」更容易有直接感受。</p>
             </div>
           </div>
 
           <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-cyan-300 text-slate-950 flex items-center justify-center font-black">3</div>
+            <div class="w-10 h-10 rounded-xl bg-cyan-400 text-slate-950 flex items-center justify-center font-black">3</div>
             <div>
-              <h3 class="font-black text-xl mb-1">建立門店差異化</h3>
-              <p class="text-white/65">從一般洗澡店，升級為具備清潔護理方案的專業美容品牌。</p>
+              <h3 class="font-black text-xl mb-1 text-slate-900">建立門店差異化</h3>
+              <p class="text-slate-600">從一般洗澡店，升級為具備清潔護理方案的專業美容品牌。</p>
             </div>
           </div>
         </div>
@@ -256,14 +255,14 @@
       <div class="relative">
         <div class="absolute -inset-6 bg-cyan-300/10 blur-3xl rounded-full"></div>
         <div class="relative glass-card rounded-[2rem] p-8">
-          <h3 class="text-3xl font-black mb-6">適合導入場景</h3>
+          <h3 class="text-3xl font-black mb-6 text-slate-900">適合導入場景</h3>
           <div class="grid sm:grid-cols-2 gap-4">
-            <div class="bg-white/10 rounded-2xl p-5">寵物美容院</div>
-            <div class="bg-white/10 rounded-2xl p-5">寵物旅館</div>
-            <div class="bg-white/10 rounded-2xl p-5">到府美容師</div>
-            <div class="bg-white/10 rounded-2xl p-5">高端洗護服務</div>
-            <div class="bg-white/10 rounded-2xl p-5">敏感肌友善清潔</div>
-            <div class="bg-white/10 rounded-2xl p-5">除臭體驗活動</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">寵物美容院</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">寵物旅館</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">到府美容師</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">高端洗護服務</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">敏感肌友善清潔</div>
+            <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-slate-700">除臭體驗活動</div>
           </div>
         </div>
       </div>
@@ -274,11 +273,11 @@
   <section id="features" class="section-bg py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-cyan-300 font-bold">PRODUCT FEATURES</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6">
+        <span class="text-cyan-600 font-bold">PRODUCT FEATURES</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-900">
           為美容現場打造的清潔升級系統
         </h2>
-        <p class="text-white/70 text-lg leading-relaxed">
+        <p class="text-slate-600 text-lg leading-relaxed">
           重點不是增加美容師負擔，而是讓既有流程更有價值、更好說明、更容易被飼主理解。
         </p>
       </div>
@@ -286,32 +285,32 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="glass-card rounded-3xl p-7">
           <div class="text-4xl mb-5">💧</div>
-          <h3 class="text-xl font-black mb-3">臭氧水清潔</h3>
-          <p class="text-white/65 leading-relaxed">
+          <h3 class="text-xl font-black mb-3 text-slate-900">臭氧水清潔</h3>
+          <p class="text-slate-600 leading-relaxed">
             即時生成臭氧水，應用於毛孩洗澡、器具沖洗與環境清潔輔助。
           </p>
         </div>
 
         <div class="glass-card rounded-3xl p-7">
           <div class="text-4xl mb-5">🫧</div>
-          <h3 class="text-xl font-black mb-3">微氣泡觸感</h3>
-          <p class="text-white/65 leading-relaxed">
+          <h3 class="text-xl font-black mb-3 text-slate-900">微氣泡觸感</h3>
+          <p class="text-slate-600 leading-relaxed">
             搭配水流沖洗，創造更細緻、舒適、清爽的洗護體驗。
           </p>
         </div>
 
         <div class="glass-card rounded-3xl p-7">
           <div class="text-4xl mb-5">🎚️</div>
-          <h3 class="text-xl font-black mb-3">四段濃度調節</h3>
-          <p class="text-white/65 leading-relaxed">
+          <h3 class="text-xl font-black mb-3 text-slate-900">四段濃度調節</h3>
+          <p class="text-slate-600 leading-relaxed">
             可依不同毛孩、不同清潔場景，彈性調整使用強度。
           </p>
         </div>
 
         <div class="glass-card rounded-3xl p-7">
           <div class="text-4xl mb-5">🔧</div>
-          <h3 class="text-xl font-black mb-3">安裝簡易</h3>
-          <p class="text-white/65 leading-relaxed">
+          <h3 class="text-xl font-black mb-3 text-slate-900">安裝簡易</h3>
+          <p class="text-slate-600 leading-relaxed">
             可銜接既有水龍頭或洗澡區，降低導入門檻與施工成本。
           </p>
         </div>
@@ -320,41 +319,228 @@
   </section>
 
   <!-- Process -->
-  <section id="process" class="bg-slate-950 py-24">
+  <section id="process" class="bg-white py-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl mb-16">
-        <span class="text-cyan-300 font-bold">HOW IT WORKS</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6">
+        <span class="text-cyan-600 font-bold">HOW IT WORKS</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-900">
           不改變流程，只升級體驗。
         </h2>
-        <p class="text-white/70 text-lg leading-relaxed">
-          O-Clean 的導入邏輯，是讓美容師在熟悉的洗澡流程中加入摩氧浴清潔環節，讓門店快速完成服務升級。
+        <p class="text-slate-600 text-lg leading-relaxed">
+          導入邏輯，是讓美容師在熟悉的洗澡流程中加入摩氧浴清潔環節，讓門店快速完成服務升級。
         </p>
       </div>
 
       <div class="grid md:grid-cols-4 gap-6">
         <div class="relative glass-card rounded-3xl p-7">
-          <div class="text-cyan-300 font-black text-5xl mb-6">01</div>
-          <h3 class="text-xl font-black mb-3">接上水源</h3>
-          <p class="text-white/65">連接既有洗澡區水龍頭或供水端。</p>
+          <div class="text-cyan-600 font-black text-5xl mb-6">01</div>
+          <h3 class="text-xl font-black mb-3 text-slate-900">接上水源</h3>
+          <p class="text-slate-600">連接既有洗澡區水龍頭或供水端。</p>
         </div>
 
         <div class="relative glass-card rounded-3xl p-7">
-          <div class="text-cyan-300 font-black text-5xl mb-6">02</div>
-          <h3 class="text-xl font-black mb-3">選擇濃度</h3>
-          <p class="text-white/65">依毛孩狀況與清潔場景調整段位。</p>
+          <div class="text-cyan-600 font-black text-5xl mb-6">02</div>
+          <h3 class="text-xl font-black mb-3 text-slate-900">選擇濃度</h3>
+          <p class="text-slate-600">依毛孩狀況與清潔場景調整段位。</p>
         </div>
 
         <div class="relative glass-card rounded-3xl p-7">
-          <div class="text-cyan-300 font-black text-5xl mb-6">03</div>
-          <h3 class="text-xl font-black mb-3">開始沖洗</h3>
-          <p class="text-white/65">搭配既有洗澡流程進行摩氧清潔。</p>
+          <div class="text-cyan-600 font-black text-5xl mb-6">03</div>
+          <h3 class="text-xl font-black mb-3 text-slate-900">開始沖洗</h3>
+          <p class="text-slate-600">搭配既有洗澡流程進行摩氧清潔。</p>
         </div>
 
         <div class="relative glass-card rounded-3xl p-7">
-          <div class="text-cyan-300 font-black text-5xl mb-6">04</div>
-          <h3 class="text-xl font-black mb-3">完成體驗</h3>
-          <p class="text-white/65">讓飼主感受到清爽、除味與服務升級。</p>
+          <div class="text-cyan-600 font-black text-5xl mb-6">04</div>
+          <h3 class="text-xl font-black mb-3 text-slate-900">完成體驗</h3>
+          <p class="text-slate-600">讓飼主感受到清爽、除味與服務升級。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Installation Examples -->
+  <section id="installation" class="section-bg py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-cyan-600 font-bold">INSTALLATION EXAMPLES</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-900">
+          全台安裝實績
+        </h2>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          已有多家寵物美容院、寵物生活館實際導入，從北到南都有真實使用案例。
+        </p>
+      </div>
+
+      <!-- Region Tabs -->
+      <div class="flex justify-center gap-3 mb-12">
+        <button data-region="north" class="region-tab px-6 py-2 rounded-full font-bold transition bg-cyan-500 text-white">北部</button>
+        <button data-region="central" class="region-tab px-6 py-2 rounded-full font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">中部</button>
+        <button data-region="south" class="region-tab px-6 py-2 rounded-full font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">南部</button>
+      </div>
+
+      <!-- North -->
+      <div class="region-group" data-region-group="north">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_-Chiao-Fei-Woo-1_1.jpg" alt="巧菲woo時尚寵物沙龍" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">巧菲woo時尚寵物沙龍</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台北</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台北市士林區德行里福國路63號1樓</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-28337520</p>
+              <p class="text-slate-600 text-sm">營業時間：10:00～20:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_Papa-Chicken-Pet-1_1.jpg" alt="PAPA雞寵物生活館" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">PAPA雞寵物生活館</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">新北</p>
+              <p class="text-slate-600 text-sm leading-relaxed">新北市中和區秀景里成功路99-1號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-29267274</p>
+              <p class="text-slate-600 text-sm">營業時間：11:00～21:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_A-Plus-Pet-1_1.jpg" alt="A Plus寵物美容" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">A Plus寵物美容</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">新北</p>
+              <p class="text-slate-600 text-sm leading-relaxed">新北市三重區尚德里三和路三段94號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-26562229 / 0963-551-808</p>
+              <p class="text-slate-600 text-sm">營業時間：11:00～19:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Example_Amos-Pet-Salon-1_1.jpg" alt="阿默寵物美學" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">阿默寵物美學</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">新北</p>
+              <p class="text-slate-600 text-sm leading-relaxed">新北巿三峽區國學街1號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-26728800、0956-000-075</p>
+              <p class="text-slate-600 text-sm">營業時間：09:00～19:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_Niu-Niu-House-Pets-1_1.jpg" alt="牛牛屋寵物造型精品店" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">牛牛屋寵物造型精品店</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">基隆</p>
+              <p class="text-slate-600 text-sm leading-relaxed">基隆市安樂區安樂路二段98號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-24328425</p>
+              <p class="text-slate-600 text-sm">營業時間：11:00～22:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2025/10/＜ERDEN百昱活氧機＞Example_More-Wash-1_1.jpg" alt="More洗More洗" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">More洗More洗</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">基隆</p>
+              <p class="text-slate-600 text-sm leading-relaxed">基隆市中正區砂灣里祥豐街81號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：02-24286228</p>
+              <p class="text-slate-600 text-sm">營業時間：10:00～20:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Example_Lu-Xing-Pet-2_1.jpg" alt="魯興寵物" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">魯興寵物</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">桃園</p>
+              <p class="text-slate-600 text-sm leading-relaxed">桃園市中壢區龍慈路89號1樓</p>
+              <p class="text-slate-600 text-sm mt-1">電話：0912-812-883</p>
+              <p class="text-slate-600 text-sm">營業時間：10:00～20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Central -->
+      <div class="region-group hidden" data-region-group="central">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_Mia-Pet-Grooming-1_1.jpg" alt="米亞寵物美容工坊" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">米亞寵物美容工坊</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台中</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台中市烏日區中山路二段205號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：0970-565-798</p>
+              <p class="text-slate-600 text-sm">營業時間：09:30～18:30</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/01/＜ERDEN百昱活氧機＞Examplesin_A-Happy-Dog-1_1.jpg" alt="囍狗寵物澡堂" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">囍狗寵物澡堂</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台中</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台中市北屯區遼陽四街45號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：0979-241-202</p>
+              <p class="text-slate-600 text-sm">營業時間：10:00～19:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_Warmth-Pet-Studio1_1.jpg" alt="溫馨寵物工作室" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">溫馨寵物工作室</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台中</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台中市南屯區黎明里干城街145巷4弄7號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：0905-542-701</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- South -->
+      <div class="region-group hidden" data-region-group="south">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2025/11/＜ERDEN百昱活氧機＞Example_I-Know-Petshop.jpg" alt="愛諾寵物生活館" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">愛諾寵物生活館</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台南</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台南市東門路二段158巷16號</p>
+              <p class="text-slate-600 text-sm mt-1">電話：06-2088899</p>
+              <p class="text-slate-600 text-sm">營業時間：10:00～20:00</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_Sin-Jia-Fu-Pet-1_1.jpg" alt="鑫嘉福寵物生活館" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">鑫嘉福寵物生活館</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台南</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台南市安南區溪東一街1號1樓</p>
+              <p class="text-slate-600 text-sm mt-1">電話：0930-010-017</p>
+              <p class="text-slate-600 text-sm">營業時間：09:30～19:30</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2025/11/＜ERDEN百昱活氧機＞Example_Diyao-Pet-Aesthetics.jpg" alt="締曜寵物美學" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">締曜寵物美學</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">台南</p>
+              <p class="text-slate-600 text-sm leading-relaxed">台南市安平區怡平里建平十一街332號1樓</p>
+            </div>
+          </div>
+
+          <div class="glass-card rounded-3xl overflow-hidden">
+            <img src="https://www.erden.com.tw/wp-content/uploads/2026/05/＜ERDEN百昱活氧機＞Examplesin_D-Doggy-Pet-1_1.jpg" alt="D.Doggy蒂荳閣寵物美容" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h3 class="font-black text-lg text-slate-900 mb-1">D.Doggy蒂荳閣寵物美容</h3>
+              <p class="text-cyan-600 text-sm font-bold mb-2">高雄</p>
+              <p class="text-slate-600 text-sm leading-relaxed">高雄市左營區崇實里先鋒路383號</p>
+              <p class="text-slate-600 text-sm">營業時間：10:30～20:30(週三休息)</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -365,44 +551,44 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="glass-card rounded-[2rem] p-8 md:p-12 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <span class="text-cyan-300 font-bold">BUSINESS VALUE</span>
-          <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6">
+          <span class="text-cyan-600 font-bold">BUSINESS VALUE</span>
+          <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-900">
             不是單純賣設備，<br>
             而是幫美容院建立新的營收入口。
           </h2>
-          <p class="text-white/72 text-lg leading-relaxed mb-8">
+          <p class="text-slate-600 text-lg leading-relaxed mb-8">
             摩氧浴適合包裝成單次加價、會員升級、首次體驗、季節除臭方案、敏感肌友善清潔方案。
             透過明確的服務命名與銷售話術，讓設備不只是成本，而是能創造回購與客單提升的工具。
           </p>
 
-          <a href="#contact" class="inline-flex px-8 py-4 rounded-full bg-cyan-300 text-slate-950 font-black hover:bg-white transition">
+          <a href="#contact" class="inline-flex px-8 py-4 rounded-full bg-cyan-500 text-white font-black hover:bg-cyan-600 transition">
             洽詢美容院導入方案
           </a>
         </div>
 
         <div class="space-y-4">
-          <div class="bg-white/10 rounded-2xl p-6 flex justify-between gap-4">
+          <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex justify-between gap-4">
             <div>
-              <h3 class="font-black text-xl">單次加價服務</h3>
-              <p class="text-white/60 mt-1">適合洗澡、基礎美容加購</p>
+              <h3 class="font-black text-xl text-slate-900">單次加價服務</h3>
+              <p class="text-slate-500 mt-1">適合洗澡、基礎美容加購</p>
             </div>
-            <div class="text-cyan-200 font-black">高感知</div>
+            <div class="text-cyan-600 font-black">高感知</div>
           </div>
 
-          <div class="bg-white/10 rounded-2xl p-6 flex justify-between gap-4">
+          <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex justify-between gap-4">
             <div>
-              <h3 class="font-black text-xl">會員定期護理</h3>
-              <p class="text-white/60 mt-1">提升回訪率與穩定營收</p>
+              <h3 class="font-black text-xl text-slate-900">會員定期護理</h3>
+              <p class="text-slate-500 mt-1">提升回訪率與穩定營收</p>
             </div>
-            <div class="text-cyan-200 font-black">高回購</div>
+            <div class="text-cyan-600 font-black">高回購</div>
           </div>
 
-          <div class="bg-white/10 rounded-2xl p-6 flex justify-between gap-4">
+          <div class="bg-slate-100 border border-slate-200 rounded-2xl p-6 flex justify-between gap-4">
             <div>
-              <h3 class="font-black text-xl">門店差異化定位</h3>
-              <p class="text-white/60 mt-1">從價格競爭轉向專業價值</p>
+              <h3 class="font-black text-xl text-slate-900">門店差異化定位</h3>
+              <p class="text-slate-500 mt-1">從價格競爭轉向專業價值</p>
             </div>
-            <div class="text-cyan-200 font-black">高區隔</div>
+            <div class="text-cyan-600 font-black">高區隔</div>
           </div>
         </div>
       </div>
@@ -410,52 +596,52 @@
   </section>
 
   <!-- FAQ -->
-  <section class="bg-slate-950 py-24">
+  <section class="bg-slate-50 py-24">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-14">
-        <span class="text-cyan-300 font-bold">FAQ</span>
-        <h2 class="text-4xl md:text-5xl font-black mt-4">
+        <span class="text-cyan-600 font-bold">FAQ</span>
+        <h2 class="text-4xl md:text-5xl font-black mt-4 text-slate-900">
           常見問題
         </h2>
       </div>
 
       <div class="space-y-4">
         <details class="glass-card rounded-2xl p-6 group">
-          <summary class="cursor-pointer font-black text-xl flex justify-between items-center">
+          <summary class="cursor-pointer font-black text-xl flex justify-between items-center text-slate-900">
             寵物摩氧浴適合哪些店家？
-            <span class="group-open:rotate-45 transition text-cyan-300 text-3xl">+</span>
+            <span class="group-open:rotate-45 transition text-cyan-600 text-3xl">+</span>
           </summary>
-          <p class="text-white/65 mt-4 leading-relaxed">
+          <p class="text-slate-600 mt-4 leading-relaxed">
             適合寵物美容院、寵物旅館、到府美容師，以及想增加洗護加值服務的門店。
           </p>
         </details>
 
         <details class="glass-card rounded-2xl p-6 group">
-          <summary class="cursor-pointer font-black text-xl flex justify-between items-center">
+          <summary class="cursor-pointer font-black text-xl flex justify-between items-center text-slate-900">
             需要大規模施工嗎？
-            <span class="group-open:rotate-45 transition text-cyan-300 text-3xl">+</span>
+            <span class="group-open:rotate-45 transition text-cyan-600 text-3xl">+</span>
           </summary>
-          <p class="text-white/65 mt-4 leading-relaxed">
+          <p class="text-slate-600 mt-4 leading-relaxed">
             不需要大規模改裝。系統可依現場水源與洗澡區配置進行規劃，降低導入門檻。
           </p>
         </details>
 
         <details class="glass-card rounded-2xl p-6 group">
-          <summary class="cursor-pointer font-black text-xl flex justify-between items-center">
+          <summary class="cursor-pointer font-black text-xl flex justify-between items-center text-slate-900">
             可以如何包裝成服務？
-            <span class="group-open:rotate-45 transition text-cyan-300 text-3xl">+</span>
+            <span class="group-open:rotate-45 transition text-cyan-600 text-3xl">+</span>
           </summary>
-          <p class="text-white/65 mt-4 leading-relaxed">
+          <p class="text-slate-600 mt-4 leading-relaxed">
             可包裝成「摩氧浴升級」、「深層除臭護理」、「季節清爽護理」、「敏感肌友善清潔」等服務名稱，搭配門店原有洗澡方案加價銷售。
           </p>
         </details>
 
         <details class="glass-card rounded-2xl p-6 group">
-          <summary class="cursor-pointer font-black text-xl flex justify-between items-center">
+          <summary class="cursor-pointer font-black text-xl flex justify-between items-center text-slate-900">
             飼主要怎麼理解這項服務？
-            <span class="group-open:rotate-45 transition text-cyan-300 text-3xl">+</span>
+            <span class="group-open:rotate-45 transition text-cyan-600 text-3xl">+</span>
           </summary>
-          <p class="text-white/65 mt-4 leading-relaxed">
+          <p class="text-slate-600 mt-4 leading-relaxed">
             建議從「洗後清爽、降低異味殘留、提升皮毛清潔感、溫和護理體驗」切入，避免使用醫療或治療型話術。
           </p>
         </details>
@@ -465,50 +651,102 @@
 
   <!-- Contact CTA -->
   <section id="contact" class="relative py-28 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-slate-950 to-emerald-500/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 via-white to-emerald-50"></div>
 
     <div class="relative max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl md:text-6xl font-black mb-6">
+      <h2 class="text-4xl md:text-6xl font-black mb-6 text-slate-900">
         想讓你的美容院，<br>
         多一個讓飼主有感的升級服務？
       </h2>
-      <p class="text-white/72 text-lg md:text-xl leading-relaxed mb-10">
+      <p class="text-slate-600 text-lg md:text-xl leading-relaxed mb-10">
         歡迎預約寵物摩氧浴導入諮詢，我們可以依照你的店型、洗澡區配置、服務價格帶與客群定位，
         協助規劃最適合的導入方案。
       </p>
 
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="https://line.me/R/ti/p/@你的LINEID"
+        <a href="https://line.me/R/ti/p/@dhg4804f"
            target="_blank"
-           class="px-10 py-4 rounded-full bg-cyan-300 text-slate-950 font-black hover:bg-white transition soft-glow">
+           class="line-btn inline-flex items-center gap-2 px-10 py-4 rounded-full text-white font-black transition">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 3.07 2.02 5.78 5.06 7.34-.16.6-.59 2.2-.68 2.54-.11.42.15.42.32.3.13-.09 2.1-1.42 2.95-2 .76.11 1.54.17 2.35.17 5.52 0 10-3.94 10-8.8C22 5.94 17.52 2 12 2z"/></svg>
           加 LINE 諮詢
-        </a>
-
-        <a href="tel:0900000000"
-           class="px-10 py-4 rounded-full border border-white/25 text-white font-black hover:bg-white hover:text-slate-950 transition">
-          立即來電
         </a>
       </div>
 
-      <p class="text-white/45 text-sm mt-6">
-        ※ 請將 LINE ID 與電話替換成你的實際聯絡方式。
-      </p>
+      <div class="mt-16 max-w-4xl mx-auto">
+        <div class="glass-card rounded-[2rem] p-8 md:p-12 soft-glow">
+          <div class="flex flex-col items-center text-center mb-10">
+            <a href="https://www.erden.com.tw/%e5%a6%82%e4%bd%95%e8%b3%bc%e8%b2%b7/" target="_blank">
+              <img src="https://www.erden.com.tw/wp-content/uploads/2026/02/463221576_1092077186036846_6675733269242428210_n-300x300.jpg"
+                   alt="威笙總代理"
+                   class="w-24 h-24 rounded-full object-cover border-4 border-cyan-400 shadow-lg mb-4 hover:scale-105 transition">
+            </a>
+            <div class="text-cyan-600 font-bold text-sm tracking-widest mb-1">官方總代理</div>
+            <h3 class="text-3xl md:text-4xl font-black text-slate-900">威笙總代理 購買諮詢</h3>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-5">
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 text-center hover:-translate-y-1 hover:shadow-xl transition">
+              <span class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-600 font-bold text-sm mb-3">北區</span>
+              <div class="text-slate-900 font-black text-lg mb-1">陳先生</div>
+              <a href="tel:0932253202" class="inline-flex items-center gap-1.5 text-slate-600 hover:text-cyan-600 font-bold transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/></svg>
+                0932-253202
+              </a>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 text-center hover:-translate-y-1 hover:shadow-xl transition">
+              <span class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-600 font-bold text-sm mb-3">中區</span>
+              <div class="text-slate-900 font-black text-lg mb-1">賴先生</div>
+              <a href="tel:0918577357" class="inline-flex items-center gap-1.5 text-slate-600 hover:text-cyan-600 font-bold transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/></svg>
+                0918-577357
+              </a>
+            </div>
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 text-center hover:-translate-y-1 hover:shadow-xl transition">
+              <span class="inline-block px-3 py-1 rounded-full bg-cyan-50 text-cyan-600 font-bold text-sm mb-3">南區</span>
+              <div class="text-slate-900 font-black text-lg mb-1">賴小姐</div>
+              <a href="tel:0963103796" class="inline-flex items-center gap-1.5 text-slate-600 hover:text-cyan-600 font-bold transition">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.21 2.2z"/></svg>
+                0963-103796
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-slate-950 border-t border-white/10 py-10">
+  <footer class="bg-slate-100 border-t border-slate-200 py-10">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-6 items-center">
       <div>
-        <div class="font-black text-xl">O-Clean 寵物摩氧浴</div>
-        <div class="text-white/50 text-sm mt-1">Pet Ozone Bath Cleaning System</div>
+        <div class="font-black text-xl text-slate-900">寵物摩氧浴</div>
+        <div class="text-slate-500 text-sm mt-1">Pet Ozone Bath Cleaning System</div>
       </div>
 
-      <div class="text-white/45 text-sm">
-        © 2026 O-Clean. All rights reserved.
+      <div class="text-slate-400 text-sm">
+        © 2026丞筑行銷. All rights reserved.
       </div>
     </div>
   </footer>
+
+  <!-- Region Tabs Filter -->
+  <script>
+    document.querySelectorAll('.region-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.region-tab').forEach(b => {
+          b.classList.remove('bg-cyan-500', 'text-white');
+          b.classList.add('bg-slate-100', 'text-slate-600');
+        });
+        btn.classList.remove('bg-slate-100', 'text-slate-600');
+        btn.classList.add('bg-cyan-500', 'text-white');
+
+        const region = btn.dataset.region;
+        document.querySelectorAll('.region-group').forEach(g => {
+          g.classList.toggle('hidden', g.dataset.regionGroup !== region);
+        });
+      });
+    });
+  </script>
 
   <!-- Smooth Scroll -->
   <script>
