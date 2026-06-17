@@ -21,11 +21,13 @@
 
     .video-bg {
       position: absolute;
-      bottom: 0;
+      top: 50%;
       left: 50%;
-      width: 120vw;
-      height: 110vh;
-      transform: translateX(-50%);
+      width: 100vw;
+      height: 56.25vw; /* 16:9 */
+      min-height: 100vh;
+      min-width: 177.78vh; /* 16:9 */
+      transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -33,14 +35,6 @@
     .video-bg iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-
-    @media (max-aspect-ratio: 16/9) {
-      .video-bg {
-        width: 180vh;
-        height: 110vh;
-      }
     }
 
     .glass-card {
