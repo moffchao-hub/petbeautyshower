@@ -37,6 +37,16 @@
       height: 100%;
     }
 
+    @media (max-width: 768px) {
+      .video-bg {
+        width: 100vw;
+        height: 56.25vw; /* lock to 16:9, no forced crop */
+        min-height: 0;
+        min-width: 0;
+        top: 50%;
+      }
+    }
+
     .glass-card {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(18px);
@@ -124,7 +134,7 @@
   </header>
 
   <!-- Hero with YouTube Background -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
 
     <!-- YouTube Fullscreen Background -->
     <div class="video-bg">
